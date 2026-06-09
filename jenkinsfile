@@ -12,10 +12,10 @@ pipeline {
     }
 
     stages {
-        stage('Run Calculator') {
+        stage('Run Calci') {
             steps {
-                sh 'chmod +x calculator_new.sh'
-                sh "./calculator_new.sh ${params.NUM1} ${params.NUM2} ${params.OPERATION}"
+                sh 'chmod +x calci.sh'
+                sh "./calci.sh ${params.NUM1} ${params.NUM2} ${params.OPERATION}"
             }
         }
     }
