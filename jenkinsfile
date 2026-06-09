@@ -1,0 +1,22 @@
+#!/bin/bash
+
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'NUM1', defaultValue: '10', description: 'First Number')
+        string(name: 'NUM2', defaultValue: '5', description: 'Second Number')
+        choice(name: 'OPERATION',
+               choices: ['1', '2', '3', '4'],
+               description: '1=Add, 2=Subtract, 3=Multiply, 4=Divide')
+    }
+
+    stages {
+        stage('Run Calculator') {
+            steps {
+                sh 'chmod +x calculator_new.sh'
+                sh "./calculator_new.sh ${params.NUM1} ${params.NUM2} ${params.OPERATION}"
+            }
+        }
+    }
+}
